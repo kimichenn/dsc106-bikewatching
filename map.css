@@ -1,0 +1,109 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  gap: 1em;
+}
+
+header {
+  display: flex;
+  gap: 1em;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+h1,
+p {
+  margin: 0;
+}
+
+label {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+  margin-left: auto;
+}
+
+#time-slider {
+  width: 18em;
+}
+
+.time-display {
+  min-width: 5.5em;
+}
+
+#selected-time,
+#any-time {
+  display: block;
+}
+
+#any-time {
+  color: #666;
+  font-style: italic;
+}
+
+#map {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#map svg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#map circle,
+.legend > div {
+  --color-departures: steelblue;
+  --color-arrivals: darkorange;
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+}
+
+#map circle {
+  fill: var(--color);
+  fill-opacity: 60%;
+  stroke: white;
+  stroke-width: 1;
+  pointer-events: auto;
+}
+
+.legend {
+  display: flex;
+  gap: 1px;
+  margin-block: 0 1em;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.legend > div {
+  flex: 1;
+  padding: 0.45em 1em;
+  background: var(--color);
+  color: white;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.legend > div:first-child {
+  text-align: left;
+}
+
+.legend > div:last-child {
+  text-align: right;
+}
